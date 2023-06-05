@@ -1,4 +1,6 @@
-# Egyedi címkéző rendszer
+# Egészséges táplálkozást segítő multicsatornás kommunikációs eszköz
+
+## Egyedi címkéző rendszer frontend
 
 Funkciói:
 - Felhasználókezelés

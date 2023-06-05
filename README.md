@@ -6,7 +6,7 @@ Funkciói:
 - Felhasználókezelés
 - Szinkronizálás a háttérrendszerrel
 - Termékkategória kezelés
-- Termékek adminisztációja
+- Termékek adminisztrációja
 - Részletes értékelés adminisztrációja
 - Szavazatok kezelése
 - Szemantikus Címkéző Algoritmus szerinti címkekiosztás

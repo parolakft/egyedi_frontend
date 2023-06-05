@@ -2,7 +2,7 @@
 
 ## Egyedi címkéző rendszer frontend
 
-Funkciói:
+### Funkciói:
 - Felhasználókezelés
 - Szinkronizálás a háttérrendszerrel
 - Termékkategória kezelés
@@ -10,3 +10,7 @@ Funkciói:
 - Részletes értékelés adminisztrációja
 - Szavazatok kezelése
 - Szemantikus Címkéző Algoritmus szerinti címkekiosztás
+
+### Követelmények 
+- React 17.0.2
+- Apache 2.4

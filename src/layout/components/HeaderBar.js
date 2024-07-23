@@ -21,7 +21,7 @@ const HeaderBar = ({  handleDrawerOpen, logout, ...props }) => {
           <MenuIcon />
         </MenuButton>
         <Typography variant="h6" noWrap>
-          XY Egyedi Admin - {auth?.user?.name}
+          Allergénszűrő Admin Felület - {auth?.user?.name}
         </Typography>
       </Toolbar>
     </StyledAppBar>

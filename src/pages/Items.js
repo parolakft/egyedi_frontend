@@ -27,7 +27,7 @@ const ItemsPage = ({ showError }) => {
   const getItems = async () => {
     try {
       // Itt azt kéne vizsgálni, hogy filters üres-e...
-      // XY-1042 zűrés nélkül is adjon vissza eredményt
+      // XY-1042 Szűrés nélkül is adjon vissza eredményt
       // if (!ures()) {
         const request = { ...filters, cats: filters.cats.map((cat) => cat.id) };
         const response = await itemServices.getList(request);

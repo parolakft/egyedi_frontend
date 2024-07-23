@@ -33,37 +33,58 @@ const DetailedPage = ({ showError }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const saveDetail = async (data) => {
-    const resp = await detailedServices.save(data);
-    // DONE hibakezelés
-    if (resp?.data?.status !== 'OK') {
-      showError('error', 'Rendszerhiba!', resp?.data?.messages[0]);
-      return;
+  const saveDetail = async data => {
+    try {
+      const resp = await detailedServices.save(data);
+      // DONE hibakezelés
+      if (resp?.data?.status !== 'OK') {
+        showError('error', 'Hiba!', resp?.data?.messages[0]);
+        return;
+      }
+    } catch (error) {
+      showError('error', 'Rendszerhiba!', 'Kérjük próbálja meg újra pár perc múlva.');
+      console.error(error);
     }
     getDetailed();
   };
 
-  const delDetail = async (id) => {
-    const resp = await detailedServices.del({ id: id });
-    // DONE hibakezelés
-    if (resp?.data?.status !== 'OK') {
-      showError('error', 'Rendszerhiba!', resp?.data?.messages[0]);
-      return;
+  const delDetail = async id => {
+    try {
+      const resp = await detailedServices.del(id);
+      // DONE hibakezelés
+      if (
+        resp?.data?.messages instanceof Array &&
+        resp?.data?.messages.length > 0 &&
+        resp?.data?.messages[0]?.startsWith('ERROR: update or delete on table "vote_details" violates foreign key constraint')
+      ) {
+        showError('error', 'Hiba!', 'Erre a szempontra már adtak le értékelést!');
+        return;
+      } else if (resp?.data?.status !== 'OK') {
+        showError('error', 'Hiba!', resp?.data?.messages[0]);
+        return;
+      }
+    } catch (error) {
+      showError('error', 'Rendszerhiba!', 'Kérjük próbálja meg újra pár perc múlva.');
+      console.error(error);
     }
     getDetailed();
   };
 
   const setOrder = async (row, order) => {
-    const req = { id: row.id, order: order };
-    const resp = await detailedServices.setOrder(req);
-    // DONE hibakezelés
-    if (resp?.data?.status !== 'OK') {
-      showError('error', 'Rendszerhiba!', resp?.data?.messages[0]);
-      return;
+    try {
+      const req = { id: row.id, order: order };
+      const resp = await detailedServices.setOrder(req);
+      // DONE hibakezelés
+      if (resp?.data?.status !== 'OK') {
+        showError('error', 'Hiba!', resp?.data?.messages[0]);
+        return;
+      }
+    } catch (error) {
+      showError('error', 'Rendszerhiba!', 'Kérjük próbálja meg újra pár perc múlva.');
+      console.error(error);
     }
     getDetailed();
   };
-
 
   return (
     <Root>
@@ -75,7 +96,7 @@ const DetailedPage = ({ showError }) => {
 export default DetailedPage;
 
 DetailedPage.propTypes = {
-  showError: PropTypes.func.isRequired,
+  showError: PropTypes.func.isRequired
 };
 
 const Root = styled.div`

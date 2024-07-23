@@ -90,6 +90,7 @@ const LayoutView = ({ logout }) => {
       url: '/category',
       show: top,
     },
+/*
     {
       id: 'reports',
       text: 'Kimutatások',
@@ -97,6 +98,7 @@ const LayoutView = ({ logout }) => {
       url: '/reports',
       show: top,
     },
+*/
   ];
 
   const subMenuItems = [
